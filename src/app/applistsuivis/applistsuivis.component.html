@@ -1,0 +1,670 @@
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-lg-3">
+                        <div class="sparkline7-list profile-online-mg-t-30 shadow-reset">
+                            <div class="sparkline7-hd">
+                                <div class="main-spark7-hd">
+                                    <h1>Liste des élèves</h1>
+                                    <div class="sparkline7-outline-icon">
+                                        <span class="sparkline7-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                        <span><i class="fa fa-wrench"></i></span>
+                                        <span class="sparkline7-collapse-close"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sparkline7-graph">
+                                <div class="user-profile-contact user-profile-scrollbar mCustomScrollbar _mCS_6 mCS-autoHide" style="position: relative; overflow: visible;">
+                                    <div id="mCSB_6" class="mCustomScrollBox mCS-light-1 mCSB_vertical mCSB_outside" tabindex="0" style="max-height: none;">
+                                           
+                                                    <input _ngcontent-xon-c0=""   [(ngModel)] = "searchText"  class="form-control" placeholder="Rechercher..." type="text">
+                                         
+                                        <div id="mCSB_6_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+                                                
+                                         <ul class="profile-contact-menu">
+
+                                        <li *ngFor="let eleve of listeleve | filter:searchText">
+
+                                            <a [routerLink]="['/suivi-eleve',eleve.id_eleve]">
+                                                
+                                                <img  *ngIf="eleve.sexe==='M'" src="assets/img/usermale.png" alt="" class="mCS_img_loaded"/> 
+                                                <img  *ngIf="eleve.sexe==='F'" src="assets/img/userfemale.png" alt="" class="mCS_img_loaded"/> 
+                                                <span>{{ eleve.nom}}</span><span>{{ ' '+eleve.prenoms+ ' '}}</span>
+                                                <span class="label label-primary">{{eleve.matricule}}</span>
+                                            </a>
+                                        
+                                        </li>
+                                       
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+                            </div>
+                        </div>
+                </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="project-details-wrap shadow-reset">
+                
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Annee :</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="btn-group project-list-ad">
+                                            <button class="btn btn-white btn-xs">{{annee.libelle}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Ecole:</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>{{ecole.nom}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Classe:</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>{{classe.code}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <div class="project-details-st">
+                                                <span><strong>Enseignant:</strong></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <div class="project-details-dt">
+                                                <span>{{enseignant.nom +' '+ enseignant.prenoms}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                               
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Matières:</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                                <select >
+                                                        <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                          {{matiere.libelle}}
+                                                        </option>
+                                                      </select>
+                                        </div>
+                                        <br/>
+                                        <div *ngIf="issaved" >
+                                                <ngb-alert   type="success" [dismissible]="false">
+                                                  <strong>Success!</strong> Enregistrement effectué avec succès.
+                                                </ngb-alert>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="project-details-mg">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <div class="project-details-st">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <div class="project-details-dt">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                    </div>
+                    <div class="row">
+                       
+                        <div class="col-lg-12">
+                            <div class="skill-content-3 project-details-progress">
+                                <div class="skill">
+                                    <div class="progress">
+                                        <div class="progress-bar wow fadeInLeft" data-progress="100%" style="width: 100%;" data-wow-duration="1.5s" data-wow-delay="1.2s"> <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-lg-12">
+                                <br/>
+                                    <div class="admintab-wrap mg-b-40">
+                                        <ul class="nav nav-tabs custom-menu-wrap custon-tab-menu-style1">
+                                            <li class="active"><a data-toggle="tab" href="#communique"><i class="fa fa-info-circle"></i> Communiqué </a>
+                                            </li>
+                                            <li><a data-toggle="tab" href="#exercice"><i class="fa fa-list"></i> Exercices de maison </a>
+                                            </li>
+                                            <li><a data-toggle="tab" href="#devoir"><i class="fa fa-bell"></i> Devoirs programmés</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="communique" class="tab-pane in active animated flipInX custon-tab-style1">
+                                                 <p style="margin-top: 1%">  <a  href="#" class="btn btn-custon-rounded-four btn-primary" data-toggle="modal" data-target="#PrimaryModalalert"><i class="fa fa-plus-circle"></i> Ajouter un communiqué</a></p>
+                                         <div class="row">
+                                            <div class="col-lg-12">
+                                             <div class="project-details-tab">
+                                            <ul class="nav nav-tabs res-pd-less-sm">
+                                                <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">Communiqués</a>
+                                                </li>
+                                                
+                                            </ul>
+                                            <div class="tab-content res-tab-content-project">
+                                                <div id="home" class="tab-pane fade animated zoomInLeft active in">
+                                                    <br/>
+                                                    <div class="offset-md-4 col-md-4" ><input _ngcontent-xon-c0=""   [(ngModel)] = "searchText2"  class="form-control" placeholder="Rechercher..." type="text">
+                                                        <br/>
+                                                    </div>
+                                                        
+                                                    <div class="project-details-completeness">
+                                                                <table class="table table-striped table-bordered table-responsive">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Periode</th>
+                                                                            <th>Titre</th>
+                                                                            <th>Matière</th>
+                                                                            <th>Message</th>
+                                                                            <th>Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr *ngFor="let suivi of listsuivis | filter:searchText2; "  >
+                                                                                <ng-container *ngIf="suivi.typesuivi == 1">
+                                                                            <td>
+                                                                                <span class="label label-primary"><i class="fa fa-check"></i> {{suivi.datedebut| date: 'dd/MM/yyyy'}}  au {{suivi.datefin | date: 'dd/MM/yyyy'}}</span>
+                                                                            </td>
+                                                                            <td>
+                                                                               {{suivi.titre}}
+                                                                            </td>
+                                                                            <td>
+                                                                               {{suivi.codematiere + '/'+suivi.libellematiere}}
+                                                                            </td>
+                                                                            <td>
+                                                                                    <p class="prject-details-small">
+                                                                                        
+                                                                                       {{suivi.message | slice :0:20 }}
+                                                                                    </p>
+                                                                                </td>
+                                                                            <td>
+                                 
+                                                                                
+                                                                               <button class="btn btn-success" mwlConfirmationPopover
+                                                                               [popoverTitle]="popoverTitle"
+                                                                               [popoverMessage]="popoverMessage"
+                                                                               [confirmText]="confirmText"
+                                                                               [cancelText]="cancelText"
+                                                                               placement="left"
+                                                                               (confirm)="publier(suivi)"
+                                                                               (cancel)="cancelClicked = true" *ngIf="suivi.status==1"  ><i class="fa fa-check"></i></button>&nbsp;
+                                                                               <button class="btn btn-default" mwlConfirmationPopover 
+                                                                               [popoverTitle]="suivi.titre"
+                                                                              [popoverMessage]="suivi.message"
+                                                                              [confirmText]="'OK'"
+                                                                              [cancelText]="'Merci'"
+                                                                              placement="bottom"
+                                                                              (confirm)="confirmClicked = true"
+                                                                              (cancel)="cancelClicked = true"><i class="fa fa-eye"></i></button>&nbsp;
+                                                                               <button class="btn btn-danger" mwlConfirmationPopover 
+                                                                                [popoverTitle]="popoverTitle"
+                                                                               [popoverMessage]="popoverMessage"
+                                                                               [confirmText]="confirmText"
+                                                                               [cancelText]="cancelText"
+                                                                               placement="top"
+                                                                               (confirm)="supprimer(suivi)"
+                                                                               (cancel)="cancelClicked = true" *ngIf="suivi.status==1"><i class="fa fa-trash"></i></button>
+                                                                            </td>
+                                                                                </ng-container>
+                                                                        </tr>
+                                                                        
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                                        </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div id="exercice" class="tab-pane animated flipInX custon-tab-style1">
+                                                  <p style="margin-top: 1%"><button type="button" class="btn btn-custon-rounded-four btn-success" data-toggle="modal" data-target="#PrimaryModalalert3"><i class="fa fa-plus-circle"></i> Ajouter un exercice</button></p> 
+                                                  <div class="row">
+                                                        <div class="col-lg-12">
+                                                         <div class="project-details-tab">
+                                                        <ul class="nav nav-tabs res-pd-less-sm">
+                                                            <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">Exercice de maison</a>
+                                                            </li>
+                                                            
+                                                        </ul>
+                                                        <div class="tab-content res-tab-content-project">
+                                                            <div id="home" class="tab-pane fade animated zoomInLeft active in">
+                                                                <br/>
+                                                                <div class="offset-md-4 col-md-4" ><input _ngcontent-xon-c0=""   [(ngModel)] = "searchText2"  class="form-control" placeholder="Rechercher..." type="text">
+                                                                    <br/>
+                                                                </div>
+                                                                    
+                                                                <div class="project-details-completeness">
+                                                                            <table class="table table-striped table-bordered table-responsive">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Periode</th>
+                                                                                        <th>Titre</th>
+                                                                                        <th>Matière</th>
+                                                                                        <th>Détails</th>
+                                                                                        <th>Actions</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr *ngFor="let suivi of listsuivis | filter:searchText2; "  >
+                                                                                            <ng-container *ngIf="suivi.typesuivi == 2">
+                                                                                        <td>
+                                                                                            <span class="label label-success"><i class="fa fa-check"></i> {{suivi.datedebut| date: 'dd/MM/yyyy'}}  au {{suivi.datefin | date: 'dd/MM/yyyy'}}</span>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                           {{suivi.titre}}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                           {{suivi.codematiere + '/'+suivi.libellematiere}}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                                <p class="prject-details-small">
+                                                                                                    
+                                                                                                   {{suivi.message | slice :0:20 }}
+                                                                                                </p>
+                                                                                            </td>
+                                                                                        <td>
+                                             
+                                                                                            
+                                                                                           <button class="btn btn-success" mwlConfirmationPopover
+                                                                                           [popoverTitle]="popoverTitle"
+                                                                                           [popoverMessage]="popoverMessage"
+                                                                                           [confirmText]="confirmText"
+                                                                                           [cancelText]="cancelText"
+                                                                                           placement="left"
+                                                                                           (confirm)="publier(suivi)"
+                                                                                           (cancel)="cancelClicked = true" *ngIf="suivi.status==1"  ><i class="fa fa-check"></i></button>&nbsp;
+                                                                                           <button class="btn btn-default" mwlConfirmationPopover 
+                                                                                           [popoverTitle]="suivi.titre"
+                                                                                          [popoverMessage]="suivi.message"
+                                                                                          [confirmText]="'OK'"
+                                                                                          [cancelText]="'Merci'"
+                                                                                          placement="bottom"
+                                                                                          (confirm)="confirmClicked = true"
+                                                                                          (cancel)="cancelClicked = true"><i class="fa fa-eye"></i></button>&nbsp;
+                                                                                           <button class="btn btn-danger" mwlConfirmationPopover 
+                                                                                            [popoverTitle]="popoverTitle"
+                                                                                           [popoverMessage]="popoverMessage"
+                                                                                           [confirmText]="confirmText"
+                                                                                           [cancelText]="cancelText"
+                                                                                           placement="top"
+                                                                                           (confirm)="supprimer(suivi)"
+                                                                                           (cancel)="cancelClicked = true" *ngIf="suivi.status==1"><i class="fa fa-trash"></i></button>
+                                                                                        </td>
+                                                                                            </ng-container>
+                                                                                    </tr>
+                                                                                    
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                                    </div>
+                                                            </div>
+                                            </div>
+                                            <div id="devoir" class="tab-pane animated flipInX custon-tab-style1">
+                                                   <p style="margin-top: 1%"><button type="button" class="btn btn-custon-rounded-four btn-warning" data-toggle="modal" data-target="#PrimaryModalalert2"><i class="fa fa-plus-circle"></i> Programmé un devoir</button></p> 
+                                                   <div class="row">
+                                                        <div class="col-lg-12">
+                                                         <div class="project-details-tab">
+                                                        <ul class="nav nav-tabs res-pd-less-sm">
+                                                            <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">Devoirs programmés</a>
+                                                            </li>
+                                                            
+                                                        </ul>
+                                                        <div class="tab-content res-tab-content-project">
+                                                            <div id="home" class="tab-pane fade animated zoomInLeft active in">
+                                                                <br/>
+                                                                <div class="offset-md-4 col-md-4 w-25" ><input _ngcontent-xon-c0=""   [(ngModel)] = "searchText2"  class="form-control" placeholder="Rechercher..." type="text">
+                                                                    <br/>
+                                                                </div>
+                                                                    
+                                                                <div class="project-details-completeness">
+                                                                            <table class="table table-striped table-bordered table-responsive">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Periode</th>
+                                                                                        <th>Type </th>
+                                                                                        <th>Date  </th>
+                                                                                        <th>Details</th>
+                                                                                        <th>Message</th>
+                                                                                        <th>Actions</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr *ngFor="let suivi of listsuivis | filter:searchText2; "  >
+                                                                                    <ng-container *ngIf="suivi.typesuivi == 3">
+                                                                                        <td>
+                                                                                            <span class="label label-warning"><i class="fa fa-check"></i> {{suivi.datedebut| date: 'dd/MM/yyyy'}}  au {{suivi.datefin | date: 'dd/MM/yyyy'}}</span>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                           {{suivi.titre}}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                                {{suivi.datedevoir | date: 'dd/MM/yyyy' }}
+                                                                                             </td>
+                                                                                        <td>
+                                                                                           {{suivi.codematiere + '/'+suivi.libellematiere}}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                                <p class="prject-details-small">
+                                                                                                    
+                                                                                                   {{suivi.message | slice :0:20 }}
+                                                                                                </p>
+                                                                                            </td>
+                                                                                        <td>
+                                             
+                                                                                            
+                                                                                           <button class="btn btn-success" mwlConfirmationPopover
+                                                                                           [popoverTitle]="popoverTitle"
+                                                                                           [popoverMessage]="popoverMessage"
+                                                                                           [confirmText]="confirmText"
+                                                                                           [cancelText]="cancelText"
+                                                                                           placement="left"
+                                                                                           (confirm)="publier(suivi)"
+                                                                                           (cancel)="cancelClicked = true" *ngIf="suivi.status==1"  ><i class="fa fa-check"></i></button>&nbsp;
+                                                                                           <button class="btn btn-default" mwlConfirmationPopover 
+                                                                                           [popoverTitle]="suivi.titre"
+                                                                                          [popoverMessage]="suivi.message"
+                                                                                          [confirmText]="'OK'"
+                                                                                          [cancelText]="'Merci'"
+                                                                                          placement="bottom"
+                                                                                          (confirm)="confirmClicked = true"
+                                                                                          (cancel)="cancelClicked = true"><i class="fa fa-eye"></i></button>&nbsp;
+                                                                                           <button class="btn btn-danger" mwlConfirmationPopover 
+                                                                                            [popoverTitle]="popoverTitle"
+                                                                                           [popoverMessage]="popoverMessage"
+                                                                                           [confirmText]="confirmText"
+                                                                                           [cancelText]="cancelText"
+                                                                                           placement="top"
+                                                                                           (confirm)="supprimer(suivi)"
+                                                                                           (cancel)="cancelClicked = true" *ngIf="suivi.status==1"><i class="fa fa-trash"></i></button>
+                                                                                        </td>
+                                                                                    </ng-container>
+                                                                                    </tr>
+                                                                                    
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div id="PrimaryModalalert" class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" role="dialog" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div><h4><strong>Passer un communiqué</strong></h4>
+                        <hr/>
+                        </div>
+                        <form [formGroup]="formSuiviGeneral" (ngSubmit)="SubmitSuiviGeneral()" >
+                                
+                            <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="sparkline16-list shadow-reset mg-t-30">
+                                            <div class="sparkline16-hd">
+                                                    <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="idtypesuivi" formControlName="idtypesuivi" value=1 [attr.checked]="true"/>Communiqué
+                                                            </label>
+                                                     </div>
+                                                    <div class="form-group" id="data_5">
+                                                        <label>Période</label>
+                                                        <div class="input-daterange input-group" id="datepicker">
+                                                            <input type="date" class="form-control" formControlName="datedebut" name="datedebut" value="05/14/2018">
+                                                            <span class="input-group-addon">Au</span>
+                                                            <input type="date" class="form-control" formControlName="datefin" name="datefin" value="05/22/2018">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group"><label>Matière</label>
+                                                    <div class="project-details-dt">
+                                                        <select class="form-control" formControlName="matiere" name="matiere">
+                                                            <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                              {{matiere.libelle}}
+                                                            </option>
+                                                          </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group"><label>Titre</label> 
+                                                        <div class="">
+                                                            <input type="text" class="form-control" formControlName="titre" name="titre" placeholder="titre"/>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group"><label>Message</label>
+                                                    <div class="">
+                                                        <textarea  class="form-control" formControlName="message"  name="message" cols="30" rows="5" placeholder="message.."></textarea>
+                                                    </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-success"  [disabled]="!formSuiviGeneral.valid" onclick="$('#PrimaryModalalert').modal('hide')"> <i class="fa fa-save"></i> Enregistrer</button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                   
+                                </div>
+                    
+                    <div class="modal-footer">
+                        <a data-dismiss="modal" href="#" class="btn btn-default"><i class="fa fa-minus-circle"></i> Annuler</a>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="PrimaryModalalert2" class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" role="dialog" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div><h4><strong>Programmer un devoir</strong></h4>
+                            <hr/>
+                            </div>
+                            <form [formGroup]="formSuiviGeneral" (ngSubmit)="SubmitSuiviGeneral()" >
+                                    
+                                <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="sparkline16-list shadow-reset mg-t-30">
+                                                <div class="sparkline16-hd">
+                                                        <div class="radio">
+                                                                <label>
+                                                                    <input type="radio" name="idtypesuivi" formControlName="idtypesuivi" value=3 [attr.checked]="true"/>Devoir/composition
+                                                                </label>
+                                                         </div>
+                                                        <div class="form-group" id="data_5">
+                                                            <label>Période</label>
+                                                            <div class="input-daterange input-group" id="datepicker">
+                                                                <input type="date" class="form-control" formControlName="datedebut" name="datedebut" value="05/14/2018">
+                                                                <span class="input-group-addon">Au</span>
+                                                                <input type="date" class="form-control" formControlName="datefin" name="datefin" value="05/22/2018">
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class="form-group"><label>Matière</label>
+                                                        <div class="project-details-dt">
+                                                            <select class="form-control" formControlName="matiere" name="matiere">
+                                                                <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                                  {{matiere.libelle}}
+                                                                </option>
+                                                              </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group"><label>Type de devoir</label> 
+                                                            <div class="">
+                                                                    <select class="form-control" formControlName="titre" name="titre">
+                                                                        <option value="Devoir de classe">Devoir de classe</option>
+                                                                        <option value="contrôle de classe">contrôle de classe</option>
+                                                                        <option value="composition">composition</option>
+                                                                    </select>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <div class="form-group"><label>Date du devoir</label> 
+                                                            <div class="">
+                                                                <input type="date" class="form-control" formControlName="datedevoir" name="datedevoir" />
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group"><label>Message</label>
+                                                        <div class="">
+                                                            <textarea  class="form-control" formControlName="message"  name="message" cols="30" rows="5" placeholder="message.."></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-success"  [disabled]="!formSuiviGeneral.valid" onclick="$('#PrimaryModalalert2').modal('hide')"> <i class="fa fa-save"></i> Enregistrer</button>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                       
+                                    </div>
+                        
+                        <div class="modal-footer">
+                            <a data-dismiss="modal" href="#" class="btn btn-default"><i class="fa fa-minus-circle"></i> Annuler</a>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="PrimaryModalalert3" class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" role="dialog" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div><h4><strong>Exercice de maison</strong></h4>
+                                <hr/>
+                                </div>
+                                <form [formGroup]="formSuiviGeneral" (ngSubmit)="SubmitSuiviGeneral()" >
+                                        
+                                    <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="sparkline16-list shadow-reset mg-t-30">
+                                                    <div class="sparkline16-hd">
+                                                            <div class="radio">
+                                                                    <label>
+                                                                        <input type="radio" name="idtypesuivi" formControlName="idtypesuivi" value=2 [attr.checked]="true"/>Exercice de maison 
+                                                                    </label>
+                                                             </div>
+                                                            <div class="form-group" id="data_5">
+                                                                <label>Période</label>
+                                                                <div class="input-daterange input-group" id="datepicker">
+                                                                    <input type="date" class="form-control" formControlName="datedebut" name="datedebut" value="05/14/2018">
+                                                                    <span class="input-group-addon">Au</span>
+                                                                    <input type="date" class="form-control" formControlName="datefin" name="datefin" value="05/22/2018">
+                                                                </div>
+                                                            </div>
+                                                          
+                                                            <div class="form-group"><label>Matière</label>
+                                                            <div class="project-details-dt">
+                                                                <select class="form-control" formControlName="matiere" name="matiere">
+                                                                    <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                                      {{matiere.libelle}}
+                                                                    </option>
+                                                                  </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group"><label>Titre</label> 
+                                                                <div class="">
+                                                                    <input type="text" class="form-control" formControlName="titre" name="titre" placeholder="titre"/>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group"><label>Charger un fichier</label> 
+                                                               
+                                                                        <input type="file" class="form-control" formControlName="fileexo" name="fileexo" (change)="onFileChange($event)" #fileInput>
+                                                                        <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+                                                                     
+                                                            </div>
+                                                           
+                                                            <div class="form-group"><label>Commentaire</label>
+                                                            <div class="">
+                                                                <textarea  class="form-control" formControlName="message"  name="message" cols="30" rows="5" placeholder="message.."></textarea>
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button class="btn btn-success"  [disabled]="!formSuiviGeneral.valid" onclick="$('#PrimaryModalalert3').modal('hide')"> <i class="fa fa-save"></i> Enregistrer</button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                           
+                                        </div>
+                            
+                            <div class="modal-footer">
+                                <a data-dismiss="modal" href="#" class="btn btn-default"><i class="fa fa-minus-circle"></i> Annuler</a>
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>

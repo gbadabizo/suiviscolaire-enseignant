@@ -1,0 +1,437 @@
+<div class="user-profile-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="user-profile-wrap shadow-reset">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                    
+                                            <img  *ngIf="eleve.sexe==='M'" src="assets/img/male_avatar_green.png" alt="" class="mCS_img_loaded"/> 
+                                            <img  *ngIf="eleve.sexe==='F'" src="assets/img/female_avatar_green.png" alt="" class="mCS_img_loaded"/> 
+                                            
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="user-profile-content">
+                                       
+                                            <h4><span>{{ eleve.nom}}</span><span>{{ ' '+eleve.prenoms+ ' '}}</span> <br/>
+                                                <hr/>
+                                           N°matricule: <span class="label label-primary">{{eleve.matricule}}</span></h4>
+                                               
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="user-profile-social-list">
+                                    <table class="table small m-b-xs">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>542</strong> Projects
+                                                </td>
+                                                <td>
+                                                    <strong>222</strong> Followers
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>612</strong> Comments
+                                                </td>
+                                                <td>
+                                                    <strong>542</strong> Articles
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>254</strong> Tags
+                                                </td>
+                                                <td>
+                                                    <strong>552</strong> Friends
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                    <div class="income-dashone-total visitor-monthly shadow-reset nt-mg-b-30">
+                                            <div class="income-title">
+                                                <div class="main-income-head">
+                                                    <h2>{{annee.libelle}}</h2>
+                                                    <div class="main-income-phara visitor-cl">
+                                                        <p>{{ecole.nom}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="income-dashone-pro">
+                                                <div class="income-rate-total">
+                                                    <div class="price-adminpro-rate">
+                                                            <select >
+                                                                    <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                                        {{matiere.libelle}}
+                                                                    </option>
+                                                                    </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="income-range visitor-cl">
+                                                    <span class="income-percentange">{{classe.code}}</span>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="user-prfile-activity-area mg-b-40 mg-t-30">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-lg-3">
+                                <div class="sparkline9-list shadow-reset">
+                                    <div class="sparkline9-hd">
+                                        <div class="main-sparkline9-hd">
+                                            <h1>Discuter avec les parents</h1>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="sparkline9-graph">
+                                        <div class="card-box">
+                                            <div class="chat-conversation">
+                                                <div class=" _mCS_6 mCS-autoHide" >
+                                                    <div id="mCSB_6">
+                                                        <div id="mCSB_6_container" class="mCSB_container" style="position:relative; bottom:0; height: 400px;left:0;" >
+                                                    <ul class="conversation-list" *ngFor="let mg of listMsg">
+                                                       
+                                                        <li class="clearfix odd">
+                                                          
+                                                            <div class="conversation-text">
+                                                                <div>
+                                                                        <i>{{mg.datemessage  | date:"yyyy-MM-dd H:mm"}}</i>
+                                                                </div>
+                                                                   
+                                                                <div class="ctext-wrap chat-widgets-cn">
+                                                                    
+                                                                    <p>
+                                                                       {{mg.contenu}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                             
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                           
+                                    </div>
+                                                <div class="chat-widget-input">
+                                                    <div class="row">
+                                                        <div class="col-sm-8 col-md-8 col-sm-8 col-xs-8 chat-inputbar">
+                                                            <input type="text" class="form-control chat-input" name="msg" [(ngModel)]="msg" placeholder="Enter your text">
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4 col-sm-4 col-xs-4 chat-send">
+                                                            <button type="button" (click)="sendMessage()"  class="btn btn-md btn-primary btn-block waves-effect waves-light">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div>
+                                        <div class="sparkline-hd">
+                                            <div class="main-spark-hd">
+                                                <h1>Liste des suivis </h1>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="sparkline-content" >
+                                            <div id="mCSB_6" class="mCustomScrollBox mCS-light-1 mCSB_vertical mCSB_outside" tabindex="0">
+                                                <div id="mCSB_6_container" class="mCSB_container">
+                                                        <div class="row" style="margin-top: 2%"> 
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                             <a  href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#PrimaryModalalert"><i class="fa fa-plus-circle"></i> Ajouter un suivi</a> 
+                                                          </div>
+                                                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 form-group" >  
+                                                              <label style="margin-top: 10px;">Recherche: </label>
+                                                            </div>
+                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                 <input type="date" [(ngModel)] = "searchText2"  class="form-control" >
+                                                            </div>
+                                                        
+                                                        </div>
+                                                        <br/>
+
+                                            <div class="row timelinewrap-admin res-mg-b-10" *ngFor="let suiviel of listsuivis | filter:searchText2;">
+                                                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12 timeline-date-time-bd">
+                                                    <div class="icon-date-timeline">
+                                                       <p style="text-align: left; margin: 1%">
+                                                        <span class="label label-info">{{suiviel.codeMatiere +'/'+suiviel.libMatiere}}</span>
+                                                        <span class="label label-warning"><i class="fa fa-check"></i> {{suiviel.datedebut| date: 'dd/MM/yyyy'}}  au {{suiviel.datefin | date: 'dd/MM/yyyy'}}</span>
+                                                    </p>
+                                                       
+                                                       <div>
+                                                       <button class="btn btn-success" mwlConfirmationPopover
+                                                                                           [popoverTitle]="popoverTitle"
+                                                                                           [popoverMessage]="popoverMessage"
+                                                                                           [confirmText]="confirmText"
+                                                                                           [cancelText]="cancelText"
+                                                                                           placement="right"
+                                                                                           (confirm)="publier(suiviel)"
+                                                                                           (cancel)="cancelClicked = true" *ngIf="suiviel.status==1"  ><i class="fa fa-check"></i></button>&nbsp;
+                                                    <button class="btn btn-danger" mwlConfirmationPopover 
+                                                                                           [popoverTitle]="popoverTitle"
+                                                                                          [popoverMessage]="popoverMessage"
+                                                                                          [confirmText]="confirmText"
+                                                                                          [cancelText]="cancelText"
+                                                                                          placement="top"
+                                                                                          (confirm)="supprimer(suiviel)"
+                                                                                          (cancel)="cancelClicked = true" *ngIf="suiviel.status==1"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                                                        </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 timeline-adminpro-cn timeline-adminpro-bd-ct">
+                                                    <div class="timeline-content">
+                                                            <table class="table table-bordered table-adminpro table-responsive table-stripped">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                               Retard
+                                                                            </td>
+                                                                            <td class="custom-slider"> 
+                                                                                
+                                                                                    <ng5-slider value="{{suiviel.retard}}" [options]="{
+                                                                                        floor: 0,
+                                                                                        ceil: 5,
+                                                                                        step: 1,
+                                                                                        readOnly: true,
+                                                                                        showTicks: true,
+                                                                                        showSelectionBar: true,
+                                                                                        draggableRange: true
+                                                                                        
+                                                                                      }"></ng5-slider>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                               Absence
+                                                                            </td>
+                                                                            <td>
+                                                                                    <ng5-slider value="{{suiviel.absence}}" [options]="{
+                                                                                        floor: 0,
+                                                                                        ceil: 5,
+                                                                                        step: 1,
+                                                                                        readOnly: true,
+                                                                                        showTicks: true,
+                                                                                        showSelectionBar: true,
+                                                                                        draggableRange: true
+                                                                                        
+                                                                                      }"></ng5-slider> 
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                Assiduité
+                                                                            </td>
+                                                                            <td>
+                                                                                    <ng5-slider value="{{suiviel.assiduite}}" [options]="{
+                                                                                        floor: 0,
+                                                                                        ceil: 5,
+                                                                                        step: 1,
+                                                                                        readOnly: true,
+                                                                                        showTicks: true,
+                                                                                        showSelectionBar: true,
+                                                                                        draggableRange: true
+                                                                                        
+                                                                                      }"></ng5-slider>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                    Exo. maison
+                                                                            </td>
+                                                                            <td>
+                                                                                    <ng5-slider value="{{suiviel.exo_maison}}" [options]="{
+                                                                                        floor: 0,
+                                                                                        ceil: 5,
+                                                                                        step: 1,
+                                                                                        readOnly: true,
+                                                                                        showTicks: true,
+                                                                                        showSelectionBar: true,
+                                                                                        draggableRange: true
+                                                                                        
+                                                                                      }"></ng5-slider>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                               Observations
+                                                                            </td>
+                                                                            <td>
+                                                                               {{suiviel.observation}}
+                                                                            </td>
+                                                                        </tr>
+                                                                
+                                                                    </tbody>
+                                                                </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                </div>
+                                
+                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                        <div class="sparkline7-list profile-online-mg-t-30 shadow-reset">
+                                            <div class="sparkline7-hd">
+                                                <div class="main-spark7-hd">
+                                                    <h1>Liste des élèves</h1>
+                                                    <div class="sparkline7-outline-icon">
+                                                        <span class="sparkline7-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                                        <span><i class="fa fa-wrench"></i></span>
+                                                        <span class="sparkline7-collapse-close"><i class="fa fa-times"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sparkline7-graph">
+                                                <div class="user-profile-contact user-profile-scrollbar mCustomScrollbar _mCS_6 mCS-autoHide" style="position: relative; overflow: visible;">
+                                                    <div id="mCSB_6" class="mCustomScrollBox mCS-light-1 mCSB_vertical mCSB_outside" tabindex="0" style="max-height: none;">
+                                                           
+                                                                    <input _ngcontent-xon-c0=""   [(ngModel)] = "searchText"  class="form-control" placeholder="Rechercher..." type="text">
+                                                         
+                                                        <div id="mCSB_6_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+                                                                
+                                                         <ul class="profile-contact-menu">
+                
+                                                        <li *ngFor="let el of listeleve | filter:searchText">
+                
+                                                                <a [routerLink]="['/suivi-eleve',el.id_eleve]" (click)="changeEleve(el)">
+                                                                
+                                                                <img  *ngIf="el.sexe==='M'" src="assets/img/usermale.png" alt="" class="mCS_img_loaded"/> 
+                                                                <img  *ngIf="el.sexe==='F'" src="assets/img/userfemale.png" alt="" class="mCS_img_loaded"/> 
+                                                                <span>{{ el.nom}}</span><span>{{ ' '+el.prenoms+ ' '}}</span>
+                                                                <span class="label label-primary">{{el.matricule}}</span>
+                                                            </a>
+                                                        
+                                                        </li>
+                                                       
+                                                       
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                            </div>
+                                        </div>
+                                </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div id="PrimaryModalalert" class="modal modal-adminpro-general default-popup-PrimaryModal fade bounceIn animated" role="dialog" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div><h4 style="text-align: center;"><strong>Suivi - Elève</strong></h4>
+                            <hr/>
+                            </div>
+                            <form [formGroup]="formSuiviEleve" (ngSubmit)="SubmitSuiviEleve()" class="well">
+                                    
+                                <div class="row">
+                                        <div class="col-lg-12">
+                                                <div class="form-group-inner">
+                                                        <div class="row">
+                                                                <div class="col-lg-3"><label>Matière</label></div>
+                                                    <div class="col-lg-9">
+                                                        <select class="form-control" formControlName="idmatiere" name="idmatiere">
+                                                            <option *ngFor="let matiere of enseignant.matieres ; " [value]="matiere.id_matiere">
+                                                              {{matiere.libelle}}
+                                                            </option>
+                                                          </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                        <div class="form-group-inner" id="data_5">
+                                                            <div class="row">
+
+                                                            <div class="col-lg-3"><label>Période:</label></div>
+                                                            <div class="input-daterange input-group col-lg-9" id="datepicker">
+                                                                <input type="date" class="form-control" formControlName="datedebut" name="datedebut" value="05/14/2018">
+                                                                <span class="input-group-addon">Au</span>
+                                                                <input type="date" class="form-control" formControlName="datefin" name="datefin" value="05/22/2018">
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                            <div class="row">
+                                                                    <div class="col-lg-3">    <label>Assiduité:</label>  </div>
+                                                                <div class="col-lg-9">
+                                                                     <ng5-slider [(value)]="value" formControlName="assiduite" [options]="options"></ng5-slider>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                        <div class="row">
+                                                                <div class="col-lg-3">  <label>Absence:</label> </div>
+
+                                                            <div class="col-lg-9">
+                                                                 <ng5-slider [(value)]="value2"  formControlName="absence" [options]="options2"></ng5-slider>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                            <div class="row">
+                                                                    <div class="col-lg-3"> <label>Retard:</label> </div>
+                                                                <div class="col-lg-9">
+                                                                     <ng5-slider [(value)]="value3" formControlName="retard" [options]="options3"></ng5-slider>
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group-inner">
+                                                                <div class="row">
+                                                                <div class="col-lg-3"> <label>Exo. de maison:</label> </div>
+                                                                <div class="col-lg-9">
+                                                                     <ng5-slider [(value)]="value4" formControlName="exo_maison" [options]="options4"></ng5-slider>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                         <div class="form-group-inner">
+                                                                <div class="row">
+                                                                <div class="col-lg-3">  <label>Observations:</label></div>
+                                                            <div class="col-lg-9">
+                                                                <textarea  class="form-control"  formControlName="observation" name="message" cols="30" rows="3" placeholder="message.."></textarea>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            <hr/>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-success"  [disabled]="!formSuiviEleve.valid" onclick="$('#PrimaryModalalert').modal('hide')"> <i class="fa fa-save"></i> Enregistrer</button>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                    </form>
+                                       
+                                    </div>
+                        
+                        <div class="modal-footer">
+                            <a data-dismiss="modal" href="#" class="btn btn-default"><i class="fa fa-minus-circle"></i> Annuler</a>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>

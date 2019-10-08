@@ -1,0 +1,33 @@
+
+<div class="left-sidebar-pro">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <a href="#"><img src="assets/img/logo.png" alt="" style="width: 150px; height:150px" />
+            </a>
+        </div>
+        <div class="left-custom-menu-adp-wrap">
+            <ul class="nav navbar-nav left-sidebar-menu-pro">
+                <li class="nav-item">
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Tableau de bord</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                    <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                        <a href="widgets.html" class="dropdown-item">Accueil</a>
+                    </div>
+                </li>
+                <li *ngFor="let ecole of ecoles"  class="nav-item">
+                    <a href="#" data-toggle="dropdown" role="button"  (click)="getClasse(ecole)" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-list"> </i> <span class="mini-dn"> {{ecole.nom}}</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                  
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX" >
+                                    <a  href="#" class="dropdown-item" *ngFor="let classe of classes"   (click)="getClasseEcole(classe)">{{classe.code}}</a>
+                              </div>
+                       
+                 
+                   
+                </li>
+            </ul>
+        </div>
+        <div class="">
+                <img src="assets/img/p1.jpg" alt="" style="width: 200px; height:280px ; margin: 10px" />   
+        </div>
+    </nav>
+   
+</div>
